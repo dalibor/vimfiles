@@ -1,0 +1,70 @@
+h1. Vim
+
+Dalibor Nasevic's vimfiles
+http://dalibornasevic.com/
+
+
+h1. Plugins
+
+* https://github.com/tpope/vim-rails
+* https://github.com/tpope/vim-fugitive
+* https://github.com/tpope/vim-haml
+* https://github.com/tpope/vim-surround
+* https://github.com/tpope/vim-endwise
+* https://github.com/tpope/vim-commentary
+* https://github.com/tpope/vim-cucumber
+* https://github.com/tpope/vim-vividchalk
+* https://github.com/wincent/Command-T
+* https://github.com/scrooloose/nerdtree
+* https://github.com/corntrace/bufexplorer
+* https://github.com/ervandew/supertab
+* https://github.com/msanders/snipmate.vim
+* https://github.com/akitaonrails/snipmate-snippets
+* https://github.com/vim-ruby/vim-ruby
+* https://github.com/mileszs/ack.vim
+
+
+h1. Installation (Ubuntu)
+
+<pre><code>
+sudo apt-get install exuberant-ctags ncurses-term
+git clone git://github.com/dalibor/vimfiles.git ~/.vim
+cd ~/.vim
+git submodule update --init
+echo "source ~/.vim/vimrc" > ~/.vimrc
+
+# build Command-T plugin
+cd ~/.vim/bundle/Command-T/ruby/command-t
+ruby extconf.rb
+make
+</pre></code>
+
+
+h2. Vim 7.3.35 and Ubuntu
+
+If you get the following error on Ubuntu:
+
+<pre><code>
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+
+Segmentation fault
+</code></pre>
+
+You will have to update Vim to version 7.3.154:
+
+<pre><code>
+hg clone https://vim.googlecode.com/hg/ ~/vim
+cd ~/vim
+hg update -C v7-3-154
+./configure --enable-rubyinterp --with-features=huge --enable-gui=gnome2
+make
+sudo make install
+</code></pre>
+
+
+h1. Credit
+
+* https://github.com/akitaonrails/vimfiles
+* https://github.com/garybernhardt/dotfiles
+* https://github.com/krisleech/vimfiles
