@@ -115,7 +115,7 @@ set ttymouse=xterm2
 set hidden
 
 " max 80 chars per line
-set colorcolumn=80
+set colorcolumn=81
 
 if has("gui_running")
   "tell the term has 256 colors
@@ -125,15 +125,28 @@ if has("gui_running")
   "set guifont=Monospace\ Bold\ 12
   "colorscheme desert
   "colorscheme railscasts
-  colorscheme vividchalk
+  "colorscheme vividchalk
+  
+  "solarized
+  "syntax enable
+  "set background=light
+  "set background=dark
+  colorscheme solarized
 else
   "dont load csapprox if there is no gui support - silences an annoying warning
-  let g:CSApprox_loaded = 1
+  "let g:CSApprox_loaded = 1
 
   set term=gnome-256color
   "colorscheme desert
   "colorscheme railscasts
-  colorscheme vividchalk
+  "colorscheme vividchalk
+  "colorscheme grb256
+  
+  "solarized
+  syntax enable
+  "set background=light
+  set background=dark
+  colorscheme solarized
 endif
 
 "mark syntax errors with :signs
@@ -215,11 +228,12 @@ map <leader>f :CommandT<cr>
 map <leader>F :CommandT %%<cr>
 
 " File types to ignore on tab auto-complete
-set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.zip,*.ZIP,*.eot,*.svg,*.csv,*.ttf,*.svg,*.eof,*.ico,*.woff,vendor/**,coverage/**,tmp/**,rdoc/**,*.sqlite3
+"set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.zip,*.ZIP,*.eot,*.svg,*.csv,*.ttf,*.svg,*.eof,*.ico,*.woff,vendor/**,coverage/**,tmp/**,rdoc/**,*.sqlite3
 
 " View routes or Gemfile in large split
 map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gg :topleft :split Gemfile<cr>
+" map <leader>gg :topleft 100 :split Gemfile<cr>
 
 " BufExplorer
 "map <Leader>j :BufExplorer<CR>
@@ -235,7 +249,7 @@ let NERDTreeShowBookmarks = 0
 let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
-let NERDTreeQuitOnOpen = 1
+"let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 50
 " open file browser
 map <leader>p :NERDTreeToggle<cr>
@@ -332,12 +346,14 @@ function! RunTests(filename)
     :w
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1
-        exec ":!bundle exec cucumber " . a:filename
+        exec ":!bundle exec cucumber --drb " . a:filename
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . a:filename
         else
-            exec ":!bundle exec rspec " . a:filename
+            exec ":!rspec --color " . a:filename
         end
     end
 endfunction
@@ -372,6 +388,6 @@ endfunction
 map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!cucumber<cr>
-map <leader>C :w\|:!cucumber --profile wip<cr>
+map <leader>c :w\|:!bundle exec cucumber<cr>
+map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

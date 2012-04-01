@@ -22,6 +22,8 @@ h1. Plugins
 * https://github.com/akitaonrails/snipmate-snippets
 * https://github.com/vim-ruby/vim-ruby
 * https://github.com/mileszs/ack.vim
+* https://github.com/kchmck/vim-coffee-script.git
+* https://github.com/altercation/vim-colors-solarized.git
 
 
 h1. Installation (Ubuntu)
