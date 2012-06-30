@@ -24,6 +24,7 @@ h1. Plugins
 * https://github.com/mileszs/ack.vim
 * https://github.com/kchmck/vim-coffee-script.git
 * https://github.com/altercation/vim-colors-solarized.git
+* https://github.com/tsaleh/vim-matchit.git
 
 
 h1. Installation (Ubuntu)
