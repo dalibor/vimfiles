@@ -89,7 +89,7 @@ set foldmethod=indent
 set foldnestmax=3
 
 " don't fold by default
-set nofoldenable 
+set nofoldenable
 
 " Activate TAB auto-complete for file paths
 "set wildmode=list:longest
@@ -122,31 +122,31 @@ if has("gui_running")
   set t_Co=256
   set term=gnome-256color
 
-  "set guifont=Monospace\ Bold\ 12
-  "colorscheme desert
-  "colorscheme railscasts
-  "colorscheme vividchalk
-  
-  "solarized
-  "syntax enable
-  "set background=light
-  "set background=dark
-  colorscheme solarized
+  colorscheme railscasts
+  " set guifont=Monospace\ Bold\ 12
+  " colorscheme desert
+  " colorscheme vividchalk
+
+  " solarized
+  " syntax enable
+  " set background=light
+  " set background=dark
+  " colorscheme solarized
 else
   "dont load csapprox if there is no gui support - silences an annoying warning
   "let g:CSApprox_loaded = 1
 
   set term=gnome-256color
-  "colorscheme desert
-  "colorscheme railscasts
-  "colorscheme vividchalk
-  "colorscheme grb256
-  
-  "solarized
-  syntax enable
-  "set background=light
-  set background=dark
-  colorscheme solarized
+
+  colorscheme railscasts
+  " colorscheme desert
+  " colorscheme vividchalk
+
+  " colorscheme solarized
+  " syntax enable
+  " set background=light
+  " set background=dark
+  " colorscheme solarized
 endif
 
 "mark syntax errors with :signs
@@ -250,7 +250,7 @@ let NERDChristmasTree = 1
 let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
 "let NERDTreeQuitOnOpen = 1
-let NERDTreeWinSize = 50
+let NERDTreeWinSize = 40
 " open file browser
 map <leader>p :NERDTreeToggle<cr>
 " Open NERDTree by default
@@ -259,18 +259,18 @@ map <leader>p :NERDTreeToggle<cr>
 
 " Rails
 " open Rails model
-map <Leader>m :Rmodel 
+map <Leader>m :Rmodel
 " open Rails controller
-map <Leader>c :Rcontroller 
+map <Leader>c :Rcontroller
 " open Rails view
-map <Leader>v :Rview 
+map <Leader>v :Rview
 
 " Ack
 " Use Ack instead of grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 set grepprg=ack
 " search for string in files
-nmap <leader>f :Ack 
+nmap <leader>f :Ack
 
 " Scenario Outline align
 vmap <c-a> :Align \|<CR>
@@ -346,14 +346,16 @@ function! RunTests(filename)
     :w
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1
-        exec ":!bundle exec cucumber --drb " . a:filename
+        exec ":!bundle exec cucumber --drb " . a:filename . " --require features"
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
         elseif filereadable("Gemfile")
             exec ":!bundle exec rspec --color " . a:filename
+            " exec ":!bundle exec spec --color " . a:filename
         else
             exec ":!rspec --color " . a:filename
+            " exec ":!spec --color " . a:filename
         end
     end
 endfunction
@@ -391,3 +393,49 @@ map <leader>a :call RunTests('')<cr>
 map <leader>c :w\|:!bundle exec cucumber<cr>
 map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! AckGrep()
+  normal ebvey
+  exec ":!ack-grep " . @"
+endfunction
+
+map ,aa :call AckGrep()<cr>
+
+" xnoremap - mappings should apply to Visual mode, but not to Select mode
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+" Search for the current selection
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+" " Search for the current selection
+" :vmap n y/<C-R>"<CR>
+
+
+" make & trigger :&& so it preserves flags
+nnoremap & :&&<Enter>
+xnoremap & :&&<Enter>
+
+
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+
+" populate the argument list with each of the files named in the quickfix list
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
+
+" Execute ctags
+nnoremap <f5> :!ctags -R<CR>
+
+" Automatically execute ctags each time a file is saved
+" autocmd BufWritePost * call system("ctags -R")
