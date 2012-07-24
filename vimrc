@@ -303,6 +303,9 @@ map <C-l> <C-w>l
 " Map ESC
 imap jj <ESC>
 
+" insert =>
+imap <c-m> <space>=><space>
+
 " Buffers
 " Switch between buffers
 noremap <tab> :bn<CR>
@@ -439,3 +442,28 @@ nnoremap <f5> :!ctags -R<CR>
 
 " Automatically execute ctags each time a file is saved
 " autocmd BufWritePost * call system("ctags -R")
+
+
+" Rename current file
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>r :call RenameFile()<cr>
+
+
+" Promote variable to RSpec let
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>e :PromoteToLet<cr>
