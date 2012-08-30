@@ -25,6 +25,9 @@ h1. Plugins
 * https://github.com/kchmck/vim-coffee-script.git
 * https://github.com/altercation/vim-colors-solarized.git
 * https://github.com/tsaleh/vim-matchit.git
+* https://github.com/kien/ctrlp.vim
+* https://github.com/benmills/vimux
+* https://github.com/jgdavey/vim-turbux
 
 
 h1. Installation (Ubuntu)
@@ -36,12 +39,11 @@ cd ~/.vim
 git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
 
-# build Command-T plugin
+# build Command-T plugin using ruby 1.8.7
 cd ~/.vim/bundle/Command-T/ruby/command-t
 ruby extconf.rb
 make
 </pre></code>
-
 
 h2. Vim 7.3.35 and Ubuntu
 

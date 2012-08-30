@@ -127,11 +127,10 @@ if has("gui_running")
   " colorscheme desert
   " colorscheme vividchalk
 
-  " solarized
+  " colorscheme solarized
   " syntax enable
   " set background=light
   " set background=dark
-  " colorscheme solarized
 else
   "dont load csapprox if there is no gui support - silences an annoying warning
   "let g:CSApprox_loaded = 1
@@ -146,7 +145,6 @@ else
   " syntax enable
   " set background=light
   " set background=dark
-  " colorscheme solarized
 endif
 
 "mark syntax errors with :signs
@@ -210,22 +208,35 @@ function! s:SetupSnippets()
     call ExtractSnips("~/.vim/snippets/html", "xhtml")
 endfunction
 
-"Command-T
-let g:CommandTMaxHeight=5
-let g:CommandTMatchWindowAtTop=1
-"map <c-f> :CommandTFlush<cr>\|:CommandT<cr>
-map <c-f> :CommandT<cr>
-map <c-q> :CommandTFlush<cr>
-map <leader>gv :CommandT app/views<cr>
-map <leader>gc :CommandT app/controllers<cr>
-map <leader>gm :CommandT app/models<cr>
-map <leader>gh :CommandT app/helpers<cr>
-map <leader>gl :CommandT lib<cr>
-map <leader>gp :CommandT public<cr>
-map <leader>gs :CommandT public/stylesheets/sass<cr>
-map <leader>gf :CommandT features<cr>
-map <leader>f :CommandT<cr>
-map <leader>F :CommandT %%<cr>
+" "Command-T
+" let g:CommandTMaxHeight=5
+" let g:CommandTMatchWindowAtTop=1
+" "map <c-f> :CommandTFlush<cr>\|:CommandT<cr>
+" map <c-f> :CommandT<cr>
+" map <c-q> :CommandTFlush<cr>
+" map <leader>gv :CommandT app/views<cr>
+" map <leader>gc :CommandT app/controllers<cr>
+" map <leader>gm :CommandT app/models<cr>
+" map <leader>gh :CommandT app/helpers<cr>
+" map <leader>gl :CommandT lib<cr>
+" map <leader>gp :CommandT public<cr>
+" map <leader>gs :CommandT public/stylesheets/sass<cr>
+" map <leader>gf :CommandT features<cr>
+" map <leader>f :CommandT<cr>
+" map <leader>F :CommandT %%<cr>
+
+" Ctrl p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-f>'
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.gif,*.png,*.pdf
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.png$\|\.gif$\|\.jpg$',
+  \ }
+
 
 " File types to ignore on tab auto-complete
 "set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.zip,*.ZIP,*.eot,*.svg,*.csv,*.ttf,*.svg,*.eof,*.ico,*.woff,vendor/**,coverage/**,tmp/**,rdoc/**,*.sqlite3
@@ -264,6 +275,8 @@ map <Leader>m :Rmodel
 map <Leader>c :Rcontroller
 " open Rails view
 map <Leader>v :Rview
+" open Rails unit test
+map <Leader>u :Runittest
 
 " Ack
 " Use Ack instead of grep
@@ -331,71 +344,6 @@ map <leader>rv :view %%
 
 iabbrev ilor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
-" Stolen from Gary Bernhardt
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Running tests
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" vim-makegreen binds itself to ,t unless something else is bound to its
-" function.
-map <leader>\dontstealmymapsmakegreen :w\|:call MakeGreen('spec')<cr>
-
-" autoclose binds itself to ,a unless something else is bound to its
-" function.
-nmap <Leader>\dontstealmymapsautoclose <Plug>ToggleAutoCloseMappings
-
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature$') != -1
-        exec ":!bundle exec cucumber --drb " . a:filename . " --require features"
-    else
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
-            " exec ":!bundle exec spec --color " . a:filename
-        else
-            exec ":!rspec --color " . a:filename
-            " exec ":!spec --color " . a:filename
-        end
-    end
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
-    if in_test_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
-endfunction
-
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!bundle exec cucumber<cr>
-map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! AckGrep()
   normal ebvey
@@ -438,7 +386,8 @@ endfunction
 
 
 " Execute ctags
-nnoremap <f5> :!ctags -R<CR>
+" nnoremap <f5> :!ctags -R<CR>
+nnoremap <f5> :!ctags -R --exclude=.git --exclude=log *<CR>
 
 " Automatically execute ctags each time a file is saved
 " autocmd BufWritePost * call system("ctags -R")
@@ -454,7 +403,7 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>r :call RenameFile()<cr>
+map <leader>rf :call RenameFile()<cr>
 
 
 " Promote variable to RSpec let
@@ -467,3 +416,111 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>e :PromoteToLet<cr>
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimux & Turbux
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:no_turbux_mappings = 1
+map <leader>t <Plug>SendTestToTmux
+map <leader>T <Plug>SendFocusedTestToTmux
+map <leader>a :call VimuxRunCommand('bundle exec rspec --color') <cr>
+
+let g:turbux_command_prefix = 'bundle exec' " default: (empty)
+" let g:turbux_command_rspec  = 'spec'        " default: rspec
+let g:turbux_command_test_unit = 'ruby'     " default: ruby -Itest
+let g:turbux_command_cucumber = 'cucumber --drb --require features '  " default: cucumber
+let g:turbux_command_turnip = 'rspec'       " default: rspec -rturnip
+
+" let g:VimuxHeight = "50"
+" let g:VimuxOrientation = "h"
+
+" Prompt forca command to run
+map <leader>rp :PromptVimTmuxCommand<cr>
+
+" Run last ccmmand executed by RunVimTmuxCommand
+map <leader>pl :RunLastVimTmuxCommand<cr>
+
+" Inspect runner pane
+map <leader>ri :InspectVimTmuxRunner<cr>
+
+" Close all other tmux panes in current window
+map <leader>rc :CloseVimTmuxPanes<cr>
+
+" Interrupt any command running in the runner pane
+map <leader>rs :InterruptVimTmuxRunner<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+
+
+
+" " Stolen from Gary Bernhardt
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Running tests
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" " vim-makegreen binds itself to ,t unless something else is bound to its
+" " function.
+" map <leader>\dontstealmymapsmakegreen :w\|:call MakeGreen('spec')<cr>
+
+" " autoclose binds itself to ,a unless something else is bound to its
+" " function.
+" nmap <Leader>\dontstealmymapsautoclose <Plug>ToggleAutoCloseMappings
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    if match(a:filename, '\.feature$') != -1
+        exec ":!bundle exec cucumber --drb " . a:filename . " --require features"
+    else
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . a:filename
+            " exec ":!bundle exec spec --color " . a:filename
+        else
+            exec ":!rspec --color " . a:filename
+            " exec ":!spec --color " . a:filename
+        end
+    end
+endfunction
+
+" function! SetTestFile()
+"     " Set the spec file that tests will be run for.
+"     let t:grb_test_file=@%
+" endfunction
+
+" function! RunTestFile(...)
+"     if a:0
+"         let command_suffix = a:1
+"     else
+"         let command_suffix = ""
+"     endif
+
+"     " Run the tests for the previously-marked file.
+"     let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+"     if in_test_file
+"         call SetTestFile()
+"     elseif !exists("t:grb_test_file")
+"         return
+"     end
+"     call RunTests(t:grb_test_file . command_suffix)
+" endfunction
+
+" function! RunNearestTest()
+"     let spec_line_number = line('.')
+"     call RunTestFile(":" . spec_line_number)
+" endfunction
+
+" map <leader>t :call RunTestFile()<cr>
+" map <leader>T :call RunNearestTest()<cr>
+" map <leader>a :call RunTests('')<cr>
+map <leader>c :w\|:!bundle exec cucumber<cr>
+map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
