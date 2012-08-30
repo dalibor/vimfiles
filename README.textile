@@ -4,7 +4,7 @@ Dalibor Nasevic's vimfiles
 http://dalibornasevic.com/
 
 
-h1. Plugins
+h2. Plugins
 
 * https://github.com/tpope/vim-rails
 * https://github.com/tpope/vim-fugitive
@@ -30,45 +30,53 @@ h1. Plugins
 * https://github.com/jgdavey/vim-turbux
 
 
-h1. Installation (Ubuntu)
+h2. Installation (Ubuntu)
 
-<pre><code>
-sudo apt-get install exuberant-ctags ncurses-term
-git clone git://github.com/dalibor/vimfiles.git ~/.vim
-cd ~/.vim
-git submodule update --init
-echo "source ~/.vim/vimrc" > ~/.vimrc
+<pre>
+  <code>
+    sudo apt-get install vim-nox # vim with ruby support
+    sudo apt-get install exuberant-ctags ncurses-term xsel
+    git clone git://github.com/dalibor/vimfiles.git ~/.vim
+    cd ~/.vim
+    git submodule update --init
+    echo "source ~/.vim/vimrc" > ~/.vimrc
 
-# build Command-T plugin using ruby 1.8.7
-cd ~/.vim/bundle/Command-T/ruby/command-t
-ruby extconf.rb
-make
-</pre></code>
+    # build Command-T plugin using ruby 1.8.7
+    cd ~/.vim/bundle/Command-T/ruby/command-t
+    ruby extconf.rb
+    make
+  </code>
+</pre>
+
 
 h2. Vim 7.3.35 and Ubuntu
 
 If you get the following error on Ubuntu:
 
-<pre><code>
-Vim: Caught deadly signal SEGV
-Vim: Finished.
+<pre>
+  <code>
+    Vim: Caught deadly signal SEGV
+    Vim: Finished.
 
-Segmentation fault
-</code></pre>
+    Segmentation fault
+  </code>
+</pre>
 
 You will have to update Vim to version 7.3.154:
 
-<pre><code>
-hg clone https://vim.googlecode.com/hg/ ~/vim
-cd ~/vim
-hg update -C v7-3-154
-./configure --enable-rubyinterp --with-features=huge --enable-gui=gnome2
-make
-sudo make install
-</code></pre>
+<pre>
+  <code>
+    hg clone https://vim.googlecode.com/hg/ ~/vim
+    cd ~/vim
+    hg update -C v7-3-154
+    ./configure --enable-rubyinterp --with-features=huge --enable-gui=gnome2
+    make
+    sudo make install
+  </code>
+</pre>
 
 
-h1. Credit
+h2. Credit
 
 * https://github.com/akitaonrails/vimfiles
 * https://github.com/garybernhardt/dotfiles

@@ -135,7 +135,7 @@ else
   "dont load csapprox if there is no gui support - silences an annoying warning
   "let g:CSApprox_loaded = 1
 
-  set term=gnome-256color
+  set term=screen-256color
 
   colorscheme railscasts
   " colorscheme desert
@@ -266,6 +266,7 @@ let NERDTreeWinSize = 40
 map <leader>p :NERDTreeToggle<cr>
 " Open NERDTree by default
 "autocmd VimEnter * NERDTree
+  set term=screen-256color
 "autocmd VimEnter * wincmd p
 
 " Rails
@@ -294,11 +295,16 @@ cmap w!! %!sudo tee > /dev/null %
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" External copy/paste
-"vmap <C-c> "+y
-"map <C-v> "+gP<CR>
-map <Leader>. "+y<CR>
-map <Leader>; "+gP<CR>
+" use X11 clipboard for yank and paste
+set clipboard=unnamedplus
+
+" work-around to copy selected text to system clipboard
+" and prevent it from clearing clipboard when using ctrl + z (depends on xsel)
+function! CopyText()
+  normal gv"+y
+  :call system('xsel -ib', getreg('+'))
+endfunction
+vmap <leader>y :call CopyText()<cr>
 
 " Paste/Replate mappings
 " Paste last yanked text
@@ -441,7 +447,7 @@ let g:turbux_command_turnip = 'rspec'       " default: rspec -rturnip
 map <leader>rp :PromptVimTmuxCommand<cr>
 
 " Run last ccmmand executed by RunVimTmuxCommand
-map <leader>pl :RunLastVimTmuxCommand<cr>
+map <leader>rl :RunLastVimTmuxCommand<cr>
 
 " Inspect runner pane
 map <leader>ri :InspectVimTmuxRunner<cr>
