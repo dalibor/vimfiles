@@ -30,10 +30,6 @@
 	path = bundle/vim-vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
         ignore = dirty
-[submodule "bundle/Command-T"]
-	path = bundle/Command-T
-	url = git://github.com/wincent/Command-T.git
-        ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git

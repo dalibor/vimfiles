@@ -135,7 +135,7 @@ else
   "dont load csapprox if there is no gui support - silences an annoying warning
   "let g:CSApprox_loaded = 1
 
-  set term=screen-256color
+  set term=xterm-256color
 
   colorscheme railscasts
   " colorscheme desert
@@ -208,26 +208,11 @@ function! s:SetupSnippets()
     call ExtractSnips("~/.vim/snippets/html", "xhtml")
 endfunction
 
-" "Command-T
-" let g:CommandTMaxHeight=5
-" let g:CommandTMatchWindowAtTop=1
-" "map <c-f> :CommandTFlush<cr>\|:CommandT<cr>
-" map <c-f> :CommandT<cr>
-" map <c-q> :CommandTFlush<cr>
-" map <leader>gv :CommandT app/views<cr>
-" map <leader>gc :CommandT app/controllers<cr>
-" map <leader>gm :CommandT app/models<cr>
-" map <leader>gh :CommandT app/helpers<cr>
-" map <leader>gl :CommandT lib<cr>
-" map <leader>gp :CommandT public<cr>
-" map <leader>gs :CommandT public/stylesheets/sass<cr>
-" map <leader>gf :CommandT features<cr>
-" map <leader>f :CommandT<cr>
-" map <leader>F :CommandT %%<cr>
-
 " Ctrl p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-f>'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -266,7 +251,6 @@ let NERDTreeWinSize = 40
 map <leader>p :NERDTreeToggle<cr>
 " Open NERDTree by default
 "autocmd VimEnter * NERDTree
-  set term=screen-256color
 "autocmd VimEnter * wincmd p
 
 " Rails
@@ -308,10 +292,10 @@ vmap <leader>y :call CopyText()<cr>
 
 " Paste/Replate mappings
 " Paste last yanked text
-nmap <c-p> "0p
+map <c-p> "0p
 " replace selected text with yanked text
-vmap ; "_dP
-vmap ' "_dp
+" vmap ; "_dP
+" vmap ' "_dp
 
 "key mapping for window navigation
 map <C-h> <C-w>h
@@ -356,7 +340,7 @@ function! AckGrep()
   exec ":!ack-grep " . @"
 endfunction
 
-map ,aa :call AckGrep()<cr>
+map <leader>ag :call AckGrep()<cr>
 
 " xnoremap - mappings should apply to Visual mode, but not to Select mode
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -432,7 +416,7 @@ endfunction
 let g:no_turbux_mappings = 1
 map <leader>t <Plug>SendTestToTmux
 map <leader>T <Plug>SendFocusedTestToTmux
-map <leader>a :call VimuxRunCommand('bundle exec rspec --color') <cr>
+map <leader>as :call VimuxRunCommand('bundle exec rspec --color') <cr>
 
 let g:turbux_command_prefix = 'bundle exec' " default: (empty)
 " let g:turbux_command_rspec  = 'spec'        " default: rspec
