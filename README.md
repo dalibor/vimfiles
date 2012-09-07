@@ -1,9 +1,9 @@
-h1. Vim
+# Vim
 
 Dalibor Nasevic's vimfiles
 http://dalibornasevic.com/
 
-h2. Plugins
+## Plugins
 
 * https://github.com/tpope/vim-rails
 * https://github.com/tpope/vim-fugitive
@@ -27,15 +27,18 @@ h2. Plugins
 * https://github.com/benmills/vimux
 * https://github.com/jgdavey/vim-turbux
 
-h2. Installation (Ubuntu)
+## Installation (Ubuntu)
 
-<pre>
-  <code>
-    sudo apt-get install vim-nox # vim with ruby support
-    sudo apt-get install exuberant-ctags ncurses-term xsel
-    git clone git://github.com/dalibor/vimfiles.git ~/.vim
-    cd ~/.vim
-    git submodule update --init
-    echo "source ~/.vim/vimrc" > ~/.vimrc
-  </code>
-</pre>
+```bash
+sudo apt-get install vim-nox # vim with ruby support
+sudo apt-get install exuberant-ctags ncurses-term xsel
+git clone git://github.com/dalibor/vimfiles.git ~/.vim
+cd ~/.vim
+git submodule update --init
+echo "source ~/.vim/vimrc" > ~/.vimrc
+```
+or use install.sh script. Read the script first!
+
+```sh
+curl https://raw.github.com/dalibor/vimfiles/master/install.sh | bash
+```
