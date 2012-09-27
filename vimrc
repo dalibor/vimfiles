@@ -416,8 +416,9 @@ endfunction
 let g:no_turbux_mappings = 1
 map <leader>t <Plug>SendTestToTmux
 map <leader>T <Plug>SendFocusedTestToTmux
-map <leader>as :call VimuxRunCommand('bundle exec rspec --color') <cr>
+map <leader>at :call VimuxRunCommand('bundle exec rspec --color') <cr>
 
+" let g:turbux_command_prefix = 'zeus'
 let g:turbux_command_prefix = 'bundle exec' " default: (empty)
 " let g:turbux_command_rspec  = 'spec'        " default: rspec
 let g:turbux_command_test_unit = 'ruby'     " default: ruby -Itest
@@ -514,3 +515,13 @@ endfunction
 map <leader>c :w\|:!bundle exec cucumber<cr>
 map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+function! ExtractVar()
+  normal ^*``
+  normal ww
+  normal "zDdd``
+  normal cwz
+endfunction
+
+map ,gt :call ExtractVar()<cr>
