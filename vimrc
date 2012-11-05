@@ -305,9 +305,10 @@ map <C-l> <C-w>l
 
 " Map ESC
 imap jj <ESC>
+imap <c-c> <ESC>
 
 " insert =>
-imap <c-m> <space>=><space>
+imap <c-l> <space>=><space>
 
 " Buffers
 " Switch between buffers
@@ -318,6 +319,7 @@ noremap <S-tab> :bp<CR>
 nmap <leader>d :bprevious<CR>:bdelete #<CR>
 " close all buffers
 nmap <leader>D :bufdo bd<CR>
+
 " Switch between last two buffers
 nnoremap <leader><leader> <c-^>
 
@@ -396,6 +398,7 @@ endfunction
 map <leader>rf :call RenameFile()<cr>
 
 
+
 " Promote variable to RSpec let
 function! PromoteToLet()
   :normal! dd
@@ -408,6 +411,21 @@ endfunction
 :map <leader>e :PromoteToLet<cr>
 
 
+function! ExtractVar()
+  normal ^*``
+  normal ww
+  normal "zDdd``
+  normal cwz
+endfunction
+map ,gt :call ExtractVar()<cr>
+
+
+" disable arrow keys
+map <Left> :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up> :echo "no!"<cr>
+map <Top> :echo "no!"<cr>
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -418,8 +436,8 @@ map <leader>t <Plug>SendTestToTmux
 map <leader>T <Plug>SendFocusedTestToTmux
 map <leader>at :call VimuxRunCommand('bundle exec rspec --color') <cr>
 
-" let g:turbux_command_prefix = 'zeus'
-let g:turbux_command_prefix = 'bundle exec' " default: (empty)
+let g:turbux_command_prefix = 'zeus'
+" let g:turbux_command_prefix = 'bundle exec' " default: (empty)
 " let g:turbux_command_rspec  = 'spec'        " default: rspec
 let g:turbux_command_test_unit = 'ruby'     " default: ruby -Itest
 let g:turbux_command_cucumber = 'cucumber --drb --require features '  " default: cucumber
@@ -445,83 +463,7 @@ map <leader>rs :InterruptVimTmuxRunner<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
-
-
-
-
-" " Stolen from Gary Bernhardt
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " Running tests
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" " vim-makegreen binds itself to ,t unless something else is bound to its
-" " function.
-" map <leader>\dontstealmymapsmakegreen :w\|:call MakeGreen('spec')<cr>
-
-" " autoclose binds itself to ,a unless something else is bound to its
-" " function.
-" nmap <Leader>\dontstealmymapsautoclose <Plug>ToggleAutoCloseMappings
-
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature$') != -1
-        exec ":!bundle exec cucumber --drb " . a:filename . " --require features"
-    else
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
-            " exec ":!bundle exec spec --color " . a:filename
-        else
-            exec ":!rspec --color " . a:filename
-            " exec ":!spec --color " . a:filename
-        end
-    end
-endfunction
-
-" function! SetTestFile()
-"     " Set the spec file that tests will be run for.
-"     let t:grb_test_file=@%
-" endfunction
-
-" function! RunTestFile(...)
-"     if a:0
-"         let command_suffix = a:1
-"     else
-"         let command_suffix = ""
-"     endif
-
-"     " Run the tests for the previously-marked file.
-"     let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
-"     if in_test_file
-"         call SetTestFile()
-"     elseif !exists("t:grb_test_file")
-"         return
-"     end
-"     call RunTests(t:grb_test_file . command_suffix)
-" endfunction
-
-" function! RunNearestTest()
-"     let spec_line_number = line('.')
-"     call RunTestFile(":" . spec_line_number)
-" endfunction
-
-" map <leader>t :call RunTestFile()<cr>
-" map <leader>T :call RunNearestTest()<cr>
-" map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!bundle exec cucumber<cr>
-map <leader>C :w\|:!bundle exec cucumber --profile wip<cr>
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-function! ExtractVar()
-  normal ^*``
-  normal ww
-  normal "zDdd``
-  normal cwz
-endfunction
-
-map ,gt :call ExtractVar()<cr>
+let g:vroom_binstubs_path = 'zeus'
+let g:vroom_map_keys = 0
+map <unique> <Leader>rr :VroomRunTestFile<CR>
+map <unique> <Leader>rR :VroomRunNearestTest<CR>
