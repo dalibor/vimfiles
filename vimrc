@@ -137,14 +137,23 @@ else
 
   set term=xterm-256color
 
-  colorscheme railscasts
+  " colorscheme codeschool
+  " colorscheme desert
+  " colorscheme distinguished
+  " colorscheme grb256
+  " colorscheme railscasts
+  " colorscheme twilight
+  " colorscheme vividchalk
+  colorscheme jellybeans
   " colorscheme desert
   " colorscheme vividchalk
 
-  " colorscheme solarized
+  " solarized
+  " let g:solarized_termcolors=256
   " syntax enable
-  " set background=light
   " set background=dark
+  " set background=light
+  " colorscheme solarized
 endif
 
 "mark syntax errors with :signs
@@ -436,15 +445,15 @@ map <leader>t <Plug>SendTestToTmux
 map <leader>T <Plug>SendFocusedTestToTmux
 map <leader>at :call VimuxRunCommand('bundle exec rspec --color') <cr>
 
-let g:turbux_command_prefix = 'zeus'
-" let g:turbux_command_prefix = 'bundle exec' " default: (empty)
+" let g:turbux_command_prefix = 'zeus'
+let g:turbux_command_prefix = 'bundle exec' " default: (empty)
 " let g:turbux_command_rspec  = 'spec'        " default: rspec
 let g:turbux_command_test_unit = 'ruby'     " default: ruby -Itest
 let g:turbux_command_cucumber = 'cucumber --drb --require features '  " default: cucumber
 let g:turbux_command_turnip = 'rspec'       " default: rspec -rturnip
 
-" let g:VimuxHeight = "50"
-" let g:VimuxOrientation = "h"
+let g:VimuxHeight = "55"
+let g:VimuxOrientation = "h"
 
 " Prompt forca command to run
 map <leader>rp :PromptVimTmuxCommand<cr>
@@ -463,7 +472,8 @@ map <leader>rs :InterruptVimTmuxRunner<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-let g:vroom_binstubs_path = 'zeus'
+" let g:vroom_spec_command = 'zeus rspec'
 let g:vroom_map_keys = 0
 map <unique> <Leader>rr :VroomRunTestFile<CR>
 map <unique> <Leader>rR :VroomRunNearestTest<CR>
+nmap <leader>ss :runtime! syntax/2html.vim<CR>
