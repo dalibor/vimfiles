@@ -13,6 +13,8 @@ http://dalibornasevic.com/
 * https://github.com/tpope/vim-commentary
 * https://github.com/tpope/vim-cucumber
 * https://github.com/tpope/vim-vividchalk
+* https://github.com/tpope/vim-bundler
+* https://github.com/tpope/vim-rake
 * https://github.com/scrooloose/nerdtree
 * https://github.com/corntrace/bufexplorer
 * https://github.com/ervandew/supertab
@@ -30,7 +32,7 @@ http://dalibornasevic.com/
 
 ## Installation (Ubuntu)
 
-```bash
+```sh
 sudo apt-get install vim-nox # vim with ruby support
 sudo apt-get install exuberant-ctags ncurses-term xsel
 git clone git://github.com/dalibor/vimfiles.git ~/.vim

@@ -477,3 +477,4 @@ let g:vroom_map_keys = 0
 map <unique> <Leader>rr :VroomRunTestFile<CR>
 map <unique> <Leader>rR :VroomRunNearestTest<CR>
 nmap <leader>ss :runtime! syntax/2html.vim<CR>
+nmap <leader>E :!ruby %<CR>
