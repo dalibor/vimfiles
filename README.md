@@ -33,7 +33,7 @@ http://dalibornasevic.com/
 ## Installation (Ubuntu)
 
 ```sh
-sudo apt-get install vim-nox # vim with ruby support
+sudo apt-get install vim-gnome # vim with ruby support
 sudo apt-get install exuberant-ctags ncurses-term xsel
 git clone git://github.com/dalibor/vimfiles.git ~/.vim
 cd ~/.vim
