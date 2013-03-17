@@ -13,7 +13,6 @@ http://dalibornasevic.com/
 * https://github.com/tpope/vim-commentary
 * https://github.com/tpope/vim-cucumber
 * https://github.com/tpope/vim-vividchalk
-* https://github.com/tpope/vim-bundler
 * https://github.com/tpope/vim-rake
 * https://github.com/scrooloose/nerdtree
 * https://github.com/corntrace/bufexplorer
@@ -39,9 +38,4 @@ git clone git://github.com/dalibor/vimfiles.git ~/.vim
 cd ~/.vim
 git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
-```
-or use install.sh script. Read the script first!
-
-```sh
-curl https://raw.github.com/dalibor/vimfiles/master/install.sh | bash
 ```

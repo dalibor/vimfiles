@@ -433,7 +433,7 @@ map ,gt :call ExtractVar()<cr>
 map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
-map <Top> :echo "no!"<cr>
+map <Down> :echo "no!"<cr>
 
 
 
