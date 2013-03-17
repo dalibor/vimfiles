@@ -478,3 +478,7 @@ map <unique> <Leader>rr :VroomRunTestFile<CR>
 map <unique> <Leader>rR :VroomRunNearestTest<CR>
 nmap <leader>ss :runtime! syntax/2html.vim<CR>
 nmap <leader>E :!ruby %<CR>
+
+let g:EasyMotion_leader_key = '<space>'
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment

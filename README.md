@@ -28,6 +28,7 @@ http://dalibornasevic.com/
 * https://github.com/benmills/vimux
 * https://github.com/jgdavey/vim-turbux
 * https://github.com/skalnik/vim-vroom
+* https://github.com/Lokaltog/vim-easymotion
 
 ## Installation (Ubuntu)
 
