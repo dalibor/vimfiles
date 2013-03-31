@@ -445,7 +445,6 @@ map <leader>t <Plug>SendTestToTmux
 map <leader>T <Plug>SendFocusedTestToTmux
 map <leader>at :call VimuxRunCommand('bundle exec rspec --color') <cr>
 
-" let g:turbux_command_prefix = 'zeus'
 let g:turbux_command_prefix = 'bundle exec' " default: (empty)
 " let g:turbux_command_rspec  = 'spec'        " default: rspec
 let g:turbux_command_test_unit = 'ruby'     " default: ruby -Itest
@@ -472,7 +471,8 @@ map <leader>rs :InterruptVimTmuxRunner<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" let g:vroom_spec_command = 'zeus rspec'
+let g:vroom_use_bundle_exec = 0 " don't use bundle exec
+let g:vroom_spec_command = 'spring rspec'
 let g:vroom_map_keys = 0
 map <unique> <Leader>rr :VroomRunTestFile<CR>
 map <unique> <Leader>rR :VroomRunNearestTest<CR>
