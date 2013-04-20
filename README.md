@@ -1,12 +1,13 @@
-# Vim
+# Dalibor Nasevic's vimfiles
 
-Dalibor Nasevic's vimfiles
-http://dalibornasevic.com/
+* http://dalibornasevic.com
 
 ## Plugins
 
 * https://github.com/tpope/vim-pathogen
 * https://github.com/tpope/vim-rails
+* https://github.com/tpope/vim-rake
+* https://github.com/tpope/vim-bundler
 * https://github.com/tpope/vim-fugitive
 * https://github.com/tpope/vim-haml
 * https://github.com/tpope/vim-surround
@@ -14,7 +15,6 @@ http://dalibornasevic.com/
 * https://github.com/tpope/vim-commentary
 * https://github.com/tpope/vim-cucumber
 * https://github.com/tpope/vim-vividchalk
-* https://github.com/tpope/vim-rake
 * https://github.com/scrooloose/nerdtree
 * https://github.com/corntrace/bufexplorer
 * https://github.com/ervandew/supertab
@@ -31,7 +31,7 @@ http://dalibornasevic.com/
 * https://github.com/skalnik/vim-vroom
 * https://github.com/Lokaltog/vim-easymotion
 
-## Installation (Ubuntu)
+## Installation
 
 ```sh
 sudo apt-get install vim-gnome # vim with ruby support
@@ -42,14 +42,16 @@ git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
 ```
 
-### Generate documentations for everything
+### Update
 
 ```sh
-:Helptags
-```
+# Update to newest vimiles
+cd ~/.vim
+git pull origin master
 
-### Update all submodules
-
-```sh
+# Update all submodules
 git submodule foreach git pull origin master
+
+# Generate documentations for bundler plugins
+:Helptags
 ```
