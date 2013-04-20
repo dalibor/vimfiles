@@ -40,3 +40,15 @@ cd ~/.vim
 git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
 ```
+
+### Generate documentations for everything
+
+```sh
+:Helptags
+```
+
+### Update all submodules
+
+```sh
+git submodule foreach git pull origin master
+```
