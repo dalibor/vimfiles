@@ -5,6 +5,7 @@ http://dalibornasevic.com/
 
 ## Plugins
 
+* https://github.com/tpope/vim-pathogen
 * https://github.com/tpope/vim-rails
 * https://github.com/tpope/vim-fugitive
 * https://github.com/tpope/vim-haml

@@ -1,19 +1,23 @@
-call pathogen#infect()
+" Point to pathogen autoload file
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-"turn on syntax highlighting
+" Load pathogen bundled plugins
+execute pathogen#infect()
+
+" Turn on syntax highlighting
 syntax on
 
-"load ftplugins and indent files
+" Load ftplugins and indent files
 filetype plugin indent on
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" change the mapleader from \ to ,
+" Change the mapleader from \ to ,
 let mapleader = ","
 
-"avoiding annoying CSApprox warning message
+" Avoid annoying CSApprox warning message
 let g:CSApprox_verbose_level = 0
 
 " Allow backspacing over everything in insert mode
@@ -46,10 +50,10 @@ set showbreak=...
 " Proper wrapping
 set wrap linebreak nolist
 
-"add some line space for easy reading
+" Add some line space for easy reading
 set linespace=4
 
-"disable visual bell
+" Disable visual bell
 set visualbell t_vb=
 
 " gvim
@@ -61,7 +65,7 @@ endif
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" statusline setup (tail of the filename)
+" Statusline setup (tail of the filename)
 set statusline=%f
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
@@ -72,7 +76,7 @@ set laststatus=2
 " Turn off toolbar on GVim
 set guioptions-=T
 
-"recalculate the trailing whitespace warning when idle, and after saving
+" Recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 " Indentation settings
@@ -82,17 +86,15 @@ set expandtab
 set autoindent
 
 " Folding settings
-"fold based on indent
 set foldmethod=indent
 
-" set deepest folding to 3 levels
+" Set deepest folding to 3 levels
 set foldnestmax=3
 
-" don't fold by default
+" Don't fold by default
 set nofoldenable
 
 " Activate TAB auto-complete for file paths
-"set wildmode=list:longest
 set wildmode=longest,list
 
 " Make tab completion for files/buffers act like bash
@@ -108,13 +110,13 @@ set sidescrolloff=7
 set sidescroll=1
 
 "some stuff to get the mouse going in term
-set mouse=a
-set ttymouse=xterm2
+" set mouse=a
+" set ttymouse=xterm2
 
 "allow backgrounding buffers without saving them
 set hidden
 
-" max 80 chars per line
+" Max 80 chars per line
 set colorcolumn=81
 
 if has("gui_running")
