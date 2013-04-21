@@ -38,10 +38,6 @@
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
         ignore = dirty
-[submodule "snippets"]
-	path = snippets
-	url = git://github.com/akitaonrails/snipmate-snippets.git
-        ignore = dirty
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
@@ -93,3 +89,6 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen
+[submodule "snippets"]
+	path = snippets
+	url = git://github.com/dalibor/snipmate-snippets.git

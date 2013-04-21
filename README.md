@@ -49,6 +49,7 @@ cd ~/.vim
 git pull origin master
 
 # Update all submodules
+git submodule sync
 git submodule foreach git pull origin master
 
 # Generate documentations for bundler plugins
