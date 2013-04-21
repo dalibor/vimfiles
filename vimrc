@@ -127,7 +127,6 @@ if has("gui_running")
   colorscheme railscasts
   " set guifont=Monospace\ Bold\ 12
   " colorscheme desert
-  " colorscheme vividchalk
 
   " colorscheme solarized
   " syntax enable
@@ -145,10 +144,8 @@ else
   " colorscheme grb256
   " colorscheme railscasts
   " colorscheme twilight
-  " colorscheme vividchalk
   colorscheme jellybeans
   " colorscheme desert
-  " colorscheme vividchalk
 
   " solarized
   " let g:solarized_termcolors=256

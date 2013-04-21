@@ -14,7 +14,6 @@
 * https://github.com/tpope/vim-endwise
 * https://github.com/tpope/vim-commentary
 * https://github.com/tpope/vim-cucumber
-* https://github.com/tpope/vim-vividchalk
 * https://github.com/scrooloose/nerdtree
 * https://github.com/corntrace/bufexplorer
 * https://github.com/ervandew/supertab

@@ -26,10 +26,6 @@
 	path = bundle/vim-cucumber
 	url = git://github.com/tpope/vim-cucumber.git
         ignore = dirty
-[submodule "bundle/vim-vividchalk"]
-	path = bundle/vim-vividchalk
-	url = git://github.com/tpope/vim-vividchalk.git
-        ignore = dirty
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
