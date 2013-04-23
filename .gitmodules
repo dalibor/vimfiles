@@ -70,10 +70,6 @@
 	path = bundle/vimux
 	url = https://github.com/benmills/vimux
         ignore = dirty
-[submodule "bundle/vim-turbux"]
-	path = bundle/vim-turbux
-	url = https://github.com/jgdavey/vim-turbux
-        ignore = dirty
 [submodule "bundle/vim-vroom"]
 	path = bundle/vim-vroom
 	url = git://github.com/skalnik/vim-vroom.git

@@ -26,7 +26,6 @@
 * https://github.com/tsaleh/vim-matchit.git
 * https://github.com/kien/ctrlp.vim
 * https://github.com/benmills/vimux
-* https://github.com/jgdavey/vim-turbux
 * https://github.com/skalnik/vim-vroom
 * https://github.com/Lokaltog/vim-easymotion
 
