@@ -28,6 +28,7 @@
 * https://github.com/benmills/vimux
 * https://github.com/skalnik/vim-vroom
 * https://github.com/Lokaltog/vim-easymotion
+* https://github.com/tpope/vim-ragtag
 
 ## Installation
 
