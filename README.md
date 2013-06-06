@@ -53,6 +53,6 @@ git submodule update --init
 git submodule sync
 git submodule foreach git pull origin master
 
-# Generate documentations for bundler plugins
+# Generate documentations for bundled plugins
 :Helptags
 ```
