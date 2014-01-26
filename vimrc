@@ -416,6 +416,11 @@ let g:EasyMotion_leader_key = '<space>'
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Javascript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" configured used javascript libs
+let g:used_javascript_libs = 'angularjs'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
