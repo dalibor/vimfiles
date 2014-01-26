@@ -405,6 +405,11 @@ map <leader>rR :VroomRunNearestTest<cr>
 " let g:vroom_use_vimux = 1 " use vimux
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nmap ,rr :w\|!rspec spec/file_spec.rb<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_leader_key = '<space>'
@@ -451,7 +456,7 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 " autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " autocmd BufWritePre *.rb :call <SID>StripTrailingWhitespaces()
-autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,scss,css,html,erb,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 nnoremap <leader>cs :call <SID>StripTrailingWhitespaces()<cr>
 
 
