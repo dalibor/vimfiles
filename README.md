@@ -29,6 +29,7 @@
 * https://github.com/skalnik/vim-vroom
 * https://github.com/Lokaltog/vim-easymotion
 * https://github.com/tpope/vim-ragtag
+* https://github.com/pangloss/vim-javascript
 
 ## Installation
 
