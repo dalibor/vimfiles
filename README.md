@@ -17,7 +17,7 @@
 * https://github.com/scrooloose/nerdtree
 * https://github.com/corntrace/bufexplorer
 * https://github.com/ervandew/supertab
-* https://github.com/msanders/snipmate.vim
+* https://github.com/dalibor/snipmate.vim
 * https://github.com/dalibor/snipmate-snippets
 * https://github.com/vim-ruby/vim-ruby
 * https://github.com/mileszs/ack.vim

@@ -46,10 +46,6 @@
 	path = bundle/ack.vim
 	url = git://github.com/mileszs/ack.vim.git
         ignore = dirty
-[submodule "bundle/snipmate.vim"]
-	path = bundle/snipmate.vim
-	url = git://github.com/akitaonrails/snipmate.vim.git
-        ignore = dirty
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
@@ -85,6 +81,9 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen
+[submodule "bundle/snipmate.vim"]
+	path = bundle/snipmate.vim
+	url = git://github.com/dalibor/snipmate.vim.git
 [submodule "snippets"]
 	path = snippets
 	url = git://github.com/dalibor/snipmate-snippets.git
