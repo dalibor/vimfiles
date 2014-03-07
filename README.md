@@ -31,6 +31,7 @@
 * https://github.com/tpope/vim-ragtag
 * https://github.com/pangloss/vim-javascript
 * https://github.com/othree/javascript-libraries-syntax.vim
+* https://github.com/godlygeek/tabular
 
 ## Installation
 

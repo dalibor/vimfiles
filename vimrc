@@ -309,6 +309,15 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabular
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>t= :Tabularize /=<CR>
+vmap <leader>t= :Tabularize /=<CR>
+nmap <leader>t: :Tabularize /:\zs<CR>
+vmap <leader>t: :Tabularize /:\zs<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -373,8 +382,8 @@ map <leader>et :Efunctionaltest
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimux
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>t <Plug>SendTestToTmux
-map <leader>T <Plug>SendFocusedTestToTmux
+map <leader>Tt <Plug>SendTestToTmux
+map <leader>TT <Plug>SendFocusedTestToTmux
 map <leader>at :call VimuxRunCommand('bundle exec rspec --color') <cr>
 let g:VimuxHeight = "55"
 let g:VimuxOrientation = "h"
