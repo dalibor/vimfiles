@@ -234,8 +234,9 @@ map <leader>v :e ~/.vim/vimrc<cr>
 " Personal dropbox mappings
 map <leader>di :e ~/Dropbox/notes/improve.txt<cr>
 map <leader>dt :e ~/Dropbox/notes/todo.txt<cr>
-map <leader>dp :sp ~/Dropbox/notes/project-notes.txt<cr>
-map <leader>dj :CtrlP ~/Dropbox/notes/<cr>
+" map <leader>dp :sp ~/Dropbox/notes/project-notes.txt<cr>
+map <leader>dn :CtrlP ~/Dropbox/notes/<cr>
+map <leader>dp :CtrlP ~/Dropbox/projects/<cr>
 
 " Automatically execute ctags each time a file is saved
 " autocmd BufWritePost * call system("ctags -R")
