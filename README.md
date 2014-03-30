@@ -1,6 +1,6 @@
-# Dalibor Nasevic's vimfiles
+# vimfiles
 
-* http://dalibornasevic.com
+Personalized vim configuration.
 
 ## Plugins
 
