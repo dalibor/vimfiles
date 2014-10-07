@@ -227,10 +227,8 @@ nmap <leader>E :!ruby %<cr>
 " Open vimrc file
 map <leader>v :e ~/.vim/vimrc<cr>
 
-" Personal dropbox mappings
-map <leader>di :e ~/Dropbox/notes/improve.txt<cr>
-map <leader>dt :e ~/Dropbox/notes/todo.txt<cr>
-" map <leader>dp :sp ~/Dropbox/notes/project-notes.txt<cr>
+" Dropbox mappings
+map <leader>dt :e ~/Dropbox/notes/planner/todo.txt<cr>
 map <leader>dn :CtrlP ~/Dropbox/notes/<cr>
 map <leader>dp :CtrlP ~/Dropbox/projects/<cr>
 
