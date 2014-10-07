@@ -159,10 +159,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-" Tab navigation
-noremap <S-h> gT
-noremap <S-l> gt
-
 " Map ESC
 imap jj <ESC>
 imap <c-c> <ESC>
