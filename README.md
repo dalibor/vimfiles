@@ -22,7 +22,6 @@ Personalized vim configuration.
 * https://github.com/dalibor/snipmate-snippets
 * https://github.com/vim-ruby/vim-ruby
 * https://github.com/mileszs/ack.vim
-* https://github.com/kchmck/vim-coffee-script.git
 * https://github.com/altercation/vim-colors-solarized.git
 * https://github.com/kien/ctrlp.vim
 * https://github.com/benmills/vimux
