@@ -97,3 +97,6 @@
 [submodule "bundle/file-line"]
 	path = bundle/file-line
 	url = git://github.com/bogado/file-line
+[submodule "bundle/vim-puppet"]
+	path = bundle/vim-puppet
+	url = git://github.com/rodjek/vim-puppet.git

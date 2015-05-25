@@ -32,6 +32,7 @@ Personalized vim configuration.
 * https://github.com/othree/javascript-libraries-syntax.vim
 * https://github.com/godlygeek/tabular
 * https://github.com/bogado/file-line
+* https://github.com/rodjek/vim-puppet
 
 ## Installation
 
