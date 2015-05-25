@@ -45,7 +45,13 @@ git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
 ```
 
-### Update
+### Adding a new plugin
+
+```
+git submodule add git://github.com/<username>/<plugin>.git bundle/<plugin>
+```
+
+### Updating plugins
 
 ```sh
 # Update to newest vimiles
