@@ -114,11 +114,14 @@ set hidden
 " Max 80 chars per line
 set colorcolumn=81
 
+" Use gnome-256color to avoid vim setting xterm in bracketed paste mode 0~ + 1~
+" https://github.com/vim/vim/issues/1671
+set term=gnome-256color
+
 " Colorscheme
 if has("gui_running")
   " Tell the term has 256 colors
   set t_Co=256
-  set term=gnome-256color
   colorscheme railscasts
 
   " solarized
@@ -127,7 +130,6 @@ if has("gui_running")
   " set background=light
   " set background=dark
 else
-  set term=xterm-256color
   colorscheme jellybeans
 
   " solarized
