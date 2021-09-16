@@ -40,7 +40,7 @@ Personalized vim configuration.
 ```sh
 sudo apt-get install vim-gnome # vim with ruby support
 sudo apt-get install exuberant-ctags ncurses-term xsel
-git clone git://github.com/dalibor/vimfiles.git ~/.vim
+git clone git@github.com/dalibor/vimfiles.git ~/.vim
 cd ~/.vim
 git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
@@ -49,7 +49,7 @@ echo "source ~/.vim/vimrc" > ~/.vimrc
 ### Adding a new plugin
 
 ```
-git submodule add git://github.com/<username>/<plugin>.git bundle/<plugin>
+git submodule add https://github.com/<username>/<plugin>.git bundle/<plugin>
 ```
 
 ### Updating plugins
