@@ -34,13 +34,14 @@ Personalized vim configuration.
 * https://github.com/bogado/file-line
 * https://github.com/rodjek/vim-puppet
 * https://github.com/ekalinin/Dockerfile.vim
+* https://github.com/fatih/vim-go
 
 ## Installation
 
 ```sh
 sudo apt-get install vim-gnome # vim with ruby support
 sudo apt-get install exuberant-ctags ncurses-term xsel
-git clone git@github.com/dalibor/vimfiles.git ~/.vim
+git clone git@github.com:dalibor/vimfiles.git ~/.vim
 cd ~/.vim
 git submodule update --init
 echo "source ~/.vim/vimrc" > ~/.vimrc
