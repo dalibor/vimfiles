@@ -35,6 +35,7 @@ Personalized vim configuration.
 * https://github.com/rodjek/vim-puppet
 * https://github.com/ekalinin/Dockerfile.vim
 * https://github.com/fatih/vim-go
+* https://github.com/editorconfig/editorconfig-vim
 
 ## Installation
 
