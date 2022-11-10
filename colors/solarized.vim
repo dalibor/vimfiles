@@ -48,10 +48,10 @@
 " 2.  Next, move or clone the `vim-colors-solarized` directory so that it is
 "     a subdirectory of the `.vim/bundle` directory.
 "
-"     a. **clone with git:**
+"     a. **clone with ssh**
 "
 "       $ cd ~/.vim/bundle
-"       $ git clone git://github.com/altercation/vim-colors-solarized.git
+"       $ git clone git@github.com:altercation/vim-colors-solarized.git
 "
 "     b. **or move manually into the pathogen bundle directory:**
 "         In the parent directory of vim-colors-solarized:
