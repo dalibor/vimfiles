@@ -40,8 +40,14 @@ Personalized vim configuration.
 ## Installation
 
 ```sh
-sudo apt-get install vim-gnome # vim with ruby support
+# Install vim with ruby and clipboard support for your OS
+sudo apt-get install vim-gtk3 # Ubuntu 22.04
+# To verify: vim --version | grep "ruby\|clipboard"
+
+# Install other dependencies
 sudo apt-get install exuberant-ctags ncurses-term xsel
+
+# Install vimfiles
 git clone git@github.com:dalibor/vimfiles.git ~/.vim
 cd ~/.vim
 git submodule update --init
