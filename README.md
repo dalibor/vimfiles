@@ -57,7 +57,7 @@ echo "source ~/.vim/vimrc" > ~/.vimrc
 ### Adding a new plugin
 
 ```
-git submodule add https://github.com/<username>/<plugin>.git bundle/<plugin>
+git submodule add git@github.com:<username>/<plugin>.git bundle/<plugin>
 ```
 
 ### Updating plugins
