@@ -68,9 +68,7 @@ cd ~/.vim
 git pull origin master
 
 # Update all submodules
-git submodule update --init
-git submodule sync
-git submodule foreach git pull origin master
+git submodule update --remote
 
 # Generate documentations for bundled plugins
 :Helptags
