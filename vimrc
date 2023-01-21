@@ -89,6 +89,12 @@ set foldnestmax=3
 " Don't fold by default
 set nofoldenable
 
+" Fold/unfold under cursor
+map <leader>f :normal za<cr>
+
+" Set high foldlevel to prevent unwanted folds
+set foldlevel=100
+
 " Activate TAB auto-complete for file paths
 set wildmode=longest,list
 
@@ -230,9 +236,7 @@ nmap <leader>E :!ruby %<cr>
 map <leader>v :e ~/.vim/vimrc<cr>
 
 " Dropbox mappings
-map <leader>dt :e ~/Dropbox/notes/planner/todo.txt<cr>
 map <leader>dn :CtrlP ~/Dropbox/notes/<cr>
-map <leader>dp :CtrlP ~/Dropbox/projects/<cr>
 
 " Automatically execute ctags each time a file is saved
 " autocmd BufWritePost * call system("ctags -R")
