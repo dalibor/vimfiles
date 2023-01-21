@@ -607,3 +607,6 @@ vnoremap <Leader>h y:call ViewHtmlText(@@)<CR>
 " View text for URL from clipboard.
 " On Linux, use @* for current selection or @+ for text in clipboard.
 nnoremap <Leader>h :call ViewHtmlText(@+)<CR>
+
+" Disable markdown recommended style
+let g:markdown_recommended_style = 0
