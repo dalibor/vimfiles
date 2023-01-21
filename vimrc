@@ -18,7 +18,7 @@ filetype plugin indent on
 set nocompatible
 
 " Use X11 clipboard for yank and paste
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Change the mapleader from \ to ,
 let mapleader = ","
@@ -62,13 +62,9 @@ set linespace=4
 " Disable visual bell
 set visualbell t_vb=
 
-" Gvim
-if has("autocmd") && has("gui")
-  au GUIEnter * set t_vb=
-endif
-
-" Turn off toolbar on GVim
-set guioptions-=T
+" Fix slow long lines
+set synmaxcol=750
+set maxmempattern=10000
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -124,6 +120,9 @@ set colorcolumn=81
 " https://github.com/vim/vim/issues/1671
 set term=gnome-256color
 
+" Set displayed encoding
+set encoding=utf-8
+
 " Colorscheme
 if has("gui_running")
   " Tell the term has 256 colors
@@ -147,7 +146,7 @@ else
 endif
 
 " Use Ack instead of grep
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 set grepprg=ack
 
 
@@ -221,6 +220,10 @@ nmap <leader>bD :bufdo bd<cr>
 
 " Clear the search buffer when hitting return
 :nnoremap <cr> :nohlsearch<cr>
+
+" Copy current file path
+" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+:nmap <leader>cp :let @+ = expand("%")<cr>
 
 " xnoremap - mappings should apply to Visual mode, but not to Select mode
 xnoremap * :<c-u>call <SID>VSetSearch()<cr>/<c-R>=@/<cr><cr>
@@ -342,6 +345,7 @@ let NERDTreeWinPos = "left"
 let NERDTreeHijackNetrw = 1
 "let NERDTreeQuitOnOpen = 1
 let NERDTreeWinSize = 40
+let g:NERDTreeDirArrows=0
 map <leader>p :NERDTreeToggle<cr>
 " Open NERDTree by default
 "autocmd VimEnter * NERDTree
