@@ -17,8 +17,9 @@ filetype plugin indent on
 " Break away from old vi compatibility
 set nocompatible
 
-" Use X11 clipboard for yank and paste
-set clipboard=unnamed
+" Cross-platform clipboard config for yank and paste
+" https://stackoverflow.com/a/30691754
+set clipboard^=unnamed,unnamedplus
 
 " Change the mapleader from \ to ,
 let mapleader = ","
