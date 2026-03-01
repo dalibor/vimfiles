@@ -223,8 +223,35 @@ nmap <leader>bD :bufdo bd<cr>
 :nnoremap <cr> :nohlsearch<cr>
 
 " Copy current file path
-" https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
-:nmap <leader>cp :let @+ = expand("%")<cr>
+function! CopyFilePath()
+  let filepath = expand("%")
+  if !empty($WAYLAND_DISPLAY)
+    let @w = filepath
+    let job = job_start(['wl-copy'], {"in_io": "pipe", "out_io": "null", "err_io": "null"})
+    call ch_sendraw(job, filepath)
+    call ch_close(job)
+  else
+    let @+ = filepath
+  endif
+endfunction
+nmap <leader>cp :call CopyFilePath()<cr>
+
+" Fix paste for yanked text on Wayland when sending terminal in background
+if !empty($WAYLAND_DISPLAY)
+  function! WaylandYank()
+    if v:event.regname == '+' || (v:event.regname == '' && &clipboard =~ 'unnamedplus')
+      let job = job_start(['wl-copy'], {"in_io": "pipe", "out_io": "null", "err_io": "null"})
+      call ch_sendraw(job, getreg(v:event.regname))
+      call ch_close(job)
+    endif
+  endfunction
+
+  augroup wayland_clipboard
+    autocmd!
+    autocmd TextYankPost * call WaylandYank()
+  augroup END
+endif
+
 
 " xnoremap - mappings should apply to Visual mode, but not to Select mode
 xnoremap * :<c-u>call <SID>VSetSearch()<cr>/<c-R>=@/<cr><cr>
