@@ -119,7 +119,10 @@ set colorcolumn=81
 
 " Use gnome-256color to avoid vim setting xterm in bracketed paste mode 0~ + 1~
 " https://github.com/vim/vim/issues/1671
-set term=gnome-256color
+if !has("nvim")
+  " Vim specific settings
+  set term=gnome-256color
+endif
 
 " Set displayed encoding
 set encoding=utf-8
