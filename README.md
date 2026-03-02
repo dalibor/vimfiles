@@ -72,6 +72,9 @@ git pull origin master
 # Update all submodules
 git submodule update --remote
 
+# Reset local submodule changes
+git submodule update --init --recursive --force
+
 # Generate documentations for bundled plugins
 :Helptags
 ```
