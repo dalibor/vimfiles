@@ -120,9 +120,17 @@ set colorcolumn=81
 " Use gnome-256color to avoid vim setting xterm in bracketed paste mode 0~ + 1~
 " https://github.com/vim/vim/issues/1671
 if !has("nvim")
-  " Vim specific settings
-  set term=gnome-256color
+  if has("unix") && !has("mac")
+    " Linux/Unix specific - use gnome-256color for Wayland compatibility
+    set term=gnome-256color
+  else
+    " macOS - fix background color erase issues instead
+    set t_ut=
+  endif
 endif
+
+" Ensure 256 colors are enabled
+set t_Co=256
 
 " Set displayed encoding
 set encoding=utf-8
