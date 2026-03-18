@@ -36,6 +36,7 @@ Personalized vim configuration.
 * https://github.com/ekalinin/Dockerfile.vim
 * https://github.com/fatih/vim-go
 * https://github.com/editorconfig/editorconfig-vim
+- https://github.com/leafgarland/typescript-vim
 
 ## Installation
 
