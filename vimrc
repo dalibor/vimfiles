@@ -423,6 +423,21 @@ map <leader>et :Efunctionaltest
 " :Etask
 " :Eintegrationtest
 
+" vim-rails resolves :A/:AV/:E* against b:rails_root, so they open buffers
+" named by absolute path. :cd . is a no-op chdir that makes Vim re-run its
+" shorten_fnames() and display the name relative to the cwd again.
+function! s:ShortenBufferName() abort
+  let name = bufname('%')
+  if !empty(name) && name[0] ==# '/' && !haslocaldir() && fnamemodify(name, ':.') !=# name
+    silent! cd .
+  endif
+endfunction
+
+augroup shorten_buffer_names
+  autocmd!
+  autocmd BufWinEnter * call s:ShortenBufferName()
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimux
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
